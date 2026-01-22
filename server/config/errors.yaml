@@ -1,0 +1,142 @@
+# Internal Errors (1000-1999)
+"1000":
+  message: Bad request
+  display_message: Invalid request. Please check your input.
+  decline_type: "BD"
+  source: INTERNAL
+
+"1001":
+  message: Unauthorized access
+  display_message: You need to be logged in to access this resource.
+  decline_type: "BD"
+  source: INTERNAL
+
+"1002":
+  message: Forbidden access
+  display_message: You don't have permission to access this resource.
+  decline_type: "BD"
+  source: INTERNAL
+
+"1003":
+  message: Resource not found
+  display_message: The requested resource was not found.
+  decline_type: "BD"
+  source: INTERNAL
+
+"1004":
+  message: Internal server error
+  display_message: Something went wrong on our end. Please try again later.
+  decline_type: "TD"
+  source: INTERNAL
+
+"1005":
+  message: Database operation failed
+  display_message: We're experiencing technical difficulties. Please try again.
+  decline_type: "TD"
+  source: INTERNAL
+
+"1006":
+  message: Error in getting db connection
+  display_message: Something went wrong! Please try again later.
+  decline_type: ""
+  source: INTERNAL
+
+# Authentication Service Errors (2000-2999)
+"2000":
+  message: Invalid credentials
+  display_message: Mobile number or password is incorrect.
+  decline_type: "BD"
+  source: AUTH_SERVICE
+
+"2001":
+  message: OTP expired
+  display_message: OTP has expired. Please request a new one.
+  decline_type: "BD"
+  source: AUTH_SERVICE
+
+"2002":
+  message: Invalid OTP
+  display_message: The OTP you entered is incorrect.
+  decline_type: "BD"
+  source: AUTH_SERVICE
+
+"2003":
+  message: Session expired
+  display_message: Your session has expired. Please login again.
+  decline_type: "BD"
+  source: AUTH_SERVICE
+
+"2004":
+  message: Maximum OTP attempts exceeded
+  display_message: You have exceeded maximum OTP attempts. Please try again later.
+  decline_type: "BD"
+  source: AUTH_SERVICE
+
+"2005":
+  message: Staff not approved
+  display_message: Your registration is pending approval from admin.
+  decline_type: "BD"
+  source: AUTH_SERVICE
+
+# User Service Errors (3000-3999)
+"3000":
+  message: User not found
+  display_message: User not found.
+  decline_type: "BD"
+  source: USER_SERVICE
+
+"3001":
+  message: User already exists
+  display_message: A user with this mobile number already exists.
+  decline_type: "BD"
+  source: USER_SERVICE
+
+"3002":
+  message: Invalid mobile number
+  display_message: Please enter a valid 10-digit mobile number.
+  decline_type: "BD"
+  source: USER_SERVICE
+
+"3003":
+  message: Invalid password format
+  display_message: Password must be at least 8 characters with letters, numbers and special characters.
+  decline_type: "BD"
+  source: USER_SERVICE
+
+# Patient Service Errors (4000-4999)
+"4000":
+  message: Patient not found
+  display_message: Patient record not found.
+  decline_type: "BD"
+  source: PATIENT_SERVICE
+
+"4001":
+  message: Invalid patient data
+  display_message: Please provide valid patient information.
+  decline_type: "BD"
+  source: PATIENT_SERVICE
+
+"4002":
+  message: Patient already registered today
+  display_message: This patient has already been registered today.
+  decline_type: "BD"
+  source: PATIENT_SERVICE
+
+# OPD Service Errors (5000-5999)
+"5000":
+  message: OPD record not found
+  display_message: OPD record not found.
+  decline_type: "BD"
+  source: OPD_SERVICE
+
+"5001":
+  message: Invalid OPD data
+  display_message: Please provide valid OPD information.
+  decline_type: "BD"
+  source: OPD_SERVICE
+
+"5002":
+  message: OPD already exists for this visit
+  display_message: OPD record already exists for this patient visit.
+  decline_type: "BD"
+  source: OPD_SERVICE
