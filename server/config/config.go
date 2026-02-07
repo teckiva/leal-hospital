@@ -16,6 +16,7 @@ type AppConfig struct {
 	Database    DBConfig
 	Security    SecurityConfig
 	Logging     LoggingConfig
+	Email       EmailConfig
 }
 
 // ServerConfig contains HTTP server configuration
@@ -71,6 +72,16 @@ type LoggingConfig struct {
 	MaxAge        int // days
 	Compress      bool
 	ConsoleOutput bool
+}
+
+// EmailConfig contains SMTP email configuration
+type EmailConfig struct {
+	SMTPHost     string
+	SMTPPort     int
+	SMTPUsername string
+	SMTPPassword string
+	FromEmail    string
+	FromName     string
 }
 
 // Global config instance
@@ -138,6 +149,14 @@ func LoadConfig() (*AppConfig, error) {
 			Compress:      viper.GetBool("LOG_COMPRESS"),
 			ConsoleOutput: viper.GetBool("LOG_CONSOLE_OUTPUT"),
 		},
+		Email: EmailConfig{
+			SMTPHost:     viper.GetString("SMTP_HOST"),
+			SMTPPort:     viper.GetInt("SMTP_PORT"),
+			SMTPUsername: viper.GetString("SMTP_USERNAME"),
+			SMTPPassword: viper.GetString("SMTP_PASSWORD"),
+			FromEmail:    viper.GetString("SMTP_FROM_EMAIL"),
+			FromName:     viper.GetString("SMTP_FROM_NAME"),
+		},
 	}
 
 	// Validate required fields
@@ -187,6 +206,14 @@ func setDefaults() {
 	viper.SetDefault("LOG_MAX_AGE", 28)
 	viper.SetDefault("LOG_COMPRESS", true)
 	viper.SetDefault("LOG_CONSOLE_OUTPUT", true)
+
+	// Email defaults
+	viper.SetDefault("SMTP_HOST", "smtp.gmail.com")
+	viper.SetDefault("SMTP_PORT", 587)
+	viper.SetDefault("SMTP_USERNAME", "")
+	viper.SetDefault("SMTP_PASSWORD", "")
+	viper.SetDefault("SMTP_FROM_EMAIL", "noreply@laelhospital.com")
+	viper.SetDefault("SMTP_FROM_NAME", "Lael Hospital")
 }
 
 // validateConfig validates required configuration fields
