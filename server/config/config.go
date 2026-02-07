@@ -81,7 +81,8 @@ func LoadConfig() (*AppConfig, error) {
 	// Set config file path
 	viper.SetConfigName(".env")
 	viper.SetConfigType("env")
-	viper.AddConfigPath("./config")
+	viper.AddConfigPath("./config")    // For running from server/
+	viper.AddConfigPath("../config")   // For running from server/cmd/
 	viper.AddConfigPath(".")
 
 	// Read from environment variables
@@ -166,7 +167,7 @@ func setDefaults() {
 	viper.SetDefault("LAEL_MYSQL_DB_PORT", "3306")
 	viper.SetDefault("LAEL_MYSQL_DB_USERNAME", "root")
 	viper.SetDefault("LAEL_MYSQL_DB_PASSWORD", "")
-	viper.SetDefault("LAEL_MYSQL_DB_SCHEMA", "lael_hospital")
+	viper.SetDefault("LAEL_MYSQL_DB_SCHEMA", "lael")
 
 	// Security defaults
 	viper.SetDefault("JWT_SECRET", "change-this-secret-in-production")

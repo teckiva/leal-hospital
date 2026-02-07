@@ -35,7 +35,7 @@ INSERT INTO lael_users (
 type CreateUserParams struct {
 	Name         string               `json:"name"`
 	Mobile       string               `json:"mobile"`
-	Email        sql.NullString       `json:"email"`
+	Email        string               `json:"email"`
 	Designation  LaelUsersDesignation `json:"designation"`
 	IsAdmin      bool                 `json:"is_admin"`
 	IsApproved   bool                 `json:"is_approved"`
@@ -58,7 +58,7 @@ const getUserByEmail = `-- name: GetUserByEmail :one
 SELECT id, name, mobile, email, designation, status, is_admin, is_approved, approved_by, password_hash, created_on, updated_on, last_login_at FROM lael_users WHERE email = ?
 `
 
-func (q *Queries) GetUserByEmail(ctx context.Context, email sql.NullString) (LaelUser, error) {
+func (q *Queries) GetUserByEmail(ctx context.Context, email string) (LaelUser, error) {
 	row := q.db.QueryRowContext(ctx, getUserByEmail, email)
 	var i LaelUser
 	err := row.Scan(

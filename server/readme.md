@@ -75,7 +75,7 @@ LAEL_MYSQL_DB_USERNAME=root
 LAEL_MYSQL_DB_PASSWORD=your_password
 LAEL_MYSQL_DB_HOST=localhost
 LAEL_MYSQL_DB_PORT=3306
-LAEL_MYSQL_DB_SCHEMA=lael_hospital
+LAEL_MYSQL_DB_SCHEMA=lael
 
 # Server Configuration
 SERVER_PORT=8080
@@ -99,8 +99,8 @@ mysql -u root -p
 ```
 
 ```sql
-CREATE DATABASE lael_hospital;
-USE lael_hospital;
+CREATE DATABASE lael;
+USE lael;
 SOURCE models/dbConf/schema.sql;
 ```
 

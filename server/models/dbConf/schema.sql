@@ -5,7 +5,7 @@ CREATE TABLE `lael_users` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `mobile` varchar(15) NOT NULL,
-  `email` varchar(255) DEFAULT NULL,
+  `email` varchar(255) NOT NULL,
   `designation` enum('doctor','nurse','staff') NOT NULL,
   `status` enum('active','inactive','temporary_inactive') NOT NULL DEFAULT 'active',
   `is_admin` tinyint(1) NOT NULL DEFAULT '0',
@@ -17,6 +17,7 @@ CREATE TABLE `lael_users` (
   `last_login_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `mobile` (`mobile`),
+  UNIQUE KEY `email` (`email`),
   KEY `idx_mobile` (`mobile`),
   KEY `idx_email` (`email`),
   KEY `idx_is_admin` (`is_admin`),
@@ -28,6 +29,7 @@ CREATE TABLE `lael_users` (
 CREATE TABLE `lael_otp` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `mobile` varchar(15) NOT NULL,
+  `email` varchar(255) NOT NULL,
   `otp` varchar(6) NOT NULL,
   `expiry` datetime NOT NULL,
   `is_validated` tinyint(1) NOT NULL DEFAULT '0',
@@ -37,6 +39,7 @@ CREATE TABLE `lael_otp` (
   `updated_on` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `idx_mobile_type` (`mobile`,`otp_type`),
+  KEY `idx_email_type` (`email`,`otp_type`),
   KEY `idx_expiry` (`expiry`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 

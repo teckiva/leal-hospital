@@ -13,12 +13,13 @@ import (
 
 const createOTP = `-- name: CreateOTP :execresult
 INSERT INTO lael_otp (
-    mobile, otp, expiry, otp_type, retry_count
-) VALUES (?, ?, ?, ?, 0)
+    mobile, email, otp, expiry, otp_type, retry_count
+) VALUES (?, ?, ?, ?, ?, 0)
 `
 
 type CreateOTPParams struct {
 	Mobile  string         `json:"mobile"`
+	Email   string         `json:"email"`
 	Otp     string         `json:"otp"`
 	Expiry  time.Time      `json:"expiry"`
 	OtpType LaelOtpOtpType `json:"otp_type"`
@@ -27,6 +28,7 @@ type CreateOTPParams struct {
 func (q *Queries) CreateOTP(ctx context.Context, arg CreateOTPParams) (sql.Result, error) {
 	return q.db.ExecContext(ctx, createOTP,
 		arg.Mobile,
+		arg.Email,
 		arg.Otp,
 		arg.Expiry,
 		arg.OtpType,
@@ -44,7 +46,7 @@ func (q *Queries) DeleteExpiredOTP(ctx context.Context) error {
 }
 
 const getLatestOTP = `-- name: GetLatestOTP :one
-SELECT id, mobile, otp, expiry, is_validated, otp_type, retry_count, created_on, updated_on FROM lael_otp
+SELECT id, mobile, email, otp, expiry, is_validated, otp_type, retry_count, created_on, updated_on FROM lael_otp
 WHERE mobile = ? AND otp_type = ? AND is_validated = FALSE
 ORDER BY created_on DESC
 LIMIT 1
@@ -61,6 +63,37 @@ func (q *Queries) GetLatestOTP(ctx context.Context, arg GetLatestOTPParams) (Lae
 	err := row.Scan(
 		&i.ID,
 		&i.Mobile,
+		&i.Email,
+		&i.Otp,
+		&i.Expiry,
+		&i.IsValidated,
+		&i.OtpType,
+		&i.RetryCount,
+		&i.CreatedOn,
+		&i.UpdatedOn,
+	)
+	return i, err
+}
+
+const getLatestOTPByEmail = `-- name: GetLatestOTPByEmail :one
+SELECT id, mobile, email, otp, expiry, is_validated, otp_type, retry_count, created_on, updated_on FROM lael_otp
+WHERE email = ? AND otp_type = ? AND is_validated = FALSE
+ORDER BY created_on DESC
+LIMIT 1
+`
+
+type GetLatestOTPByEmailParams struct {
+	Email   string         `json:"email"`
+	OtpType LaelOtpOtpType `json:"otp_type"`
+}
+
+func (q *Queries) GetLatestOTPByEmail(ctx context.Context, arg GetLatestOTPByEmailParams) (LaelOtp, error) {
+	row := q.db.QueryRowContext(ctx, getLatestOTPByEmail, arg.Email, arg.OtpType)
+	var i LaelOtp
+	err := row.Scan(
+		&i.ID,
+		&i.Mobile,
+		&i.Email,
 		&i.Otp,
 		&i.Expiry,
 		&i.IsValidated,

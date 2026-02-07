@@ -1,11 +1,17 @@
 -- name: CreateOTP :execresult
 INSERT INTO lael_otp (
-    mobile, otp, expiry, otp_type, retry_count
-) VALUES (?, ?, ?, ?, 0);
+    mobile, email, otp, expiry, otp_type, retry_count
+) VALUES (?, ?, ?, ?, ?, 0);
 
 -- name: GetLatestOTP :one
 SELECT * FROM lael_otp
 WHERE mobile = ? AND otp_type = ? AND is_validated = FALSE
+ORDER BY created_on DESC
+LIMIT 1;
+
+-- name: GetLatestOTPByEmail :one
+SELECT * FROM lael_otp
+WHERE email = ? AND otp_type = ? AND is_validated = FALSE
 ORDER BY created_on DESC
 LIMIT 1;
 

@@ -20,6 +20,7 @@ type Querier interface {
 	DeleteExpiredSessions(ctx context.Context) error
 	DeleteSession(ctx context.Context, sessionToken string) error
 	GetLatestOTP(ctx context.Context, arg GetLatestOTPParams) (LaelOtp, error)
+	GetLatestOTPByEmail(ctx context.Context, arg GetLatestOTPByEmailParams) (LaelOtp, error)
 	GetLatestPatientOPD(ctx context.Context, patientID int64) (PatientOpd, error)
 	GetPatientByID(ctx context.Context, id int64) (LaelPatient, error)
 	GetPatientByMobile(ctx context.Context, mobile string) (LaelPatient, error)
@@ -30,7 +31,7 @@ type Querier interface {
 	GetPatientsByDateRange(ctx context.Context, arg GetPatientsByDateRangeParams) ([]LaelPatient, error)
 	GetSessionByToken(ctx context.Context, sessionToken string) (LaelSession, error)
 	GetTodayPatients(ctx context.Context) ([]LaelPatient, error)
-	GetUserByEmail(ctx context.Context, email sql.NullString) (LaelUser, error)
+	GetUserByEmail(ctx context.Context, email string) (LaelUser, error)
 	GetUserByID(ctx context.Context, id int64) (LaelUser, error)
 	GetUserByMobile(ctx context.Context, mobile string) (LaelUser, error)
 	GetUserSessions(ctx context.Context, userID int64) ([]LaelSession, error)

@@ -241,6 +241,7 @@ type LaelActivityLog struct {
 type LaelOtp struct {
 	ID          int64          `json:"id"`
 	Mobile      string         `json:"mobile"`
+	Email       string         `json:"email"`
 	Otp         string         `json:"otp"`
 	Expiry      time.Time      `json:"expiry"`
 	IsValidated bool           `json:"is_validated"`
@@ -281,7 +282,7 @@ type LaelUser struct {
 	ID           int64                `json:"id"`
 	Name         string               `json:"name"`
 	Mobile       string               `json:"mobile"`
-	Email        sql.NullString       `json:"email"`
+	Email        string               `json:"email"`
 	Designation  LaelUsersDesignation `json:"designation"`
 	Status       LaelUsersStatus      `json:"status"`
 	IsAdmin      bool                 `json:"is_admin"`
