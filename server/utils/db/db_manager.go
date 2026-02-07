@@ -126,6 +126,14 @@ func (dm *DBManager) GetReadDBConn(ctx context.Context) (DBConnInterface, error)
 	return &DBConn{conn: conn}, nil
 }
 
+// GetDB returns the underlying write database connection
+func (dm *DBManager) GetDB() *sql.DB {
+	dm.mu.RLock()
+	defer dm.mu.RUnlock()
+
+	return dm.writeDB
+}
+
 // Close closes all database connections
 func (dm *DBManager) Close() error {
 	dm.mu.Lock()
