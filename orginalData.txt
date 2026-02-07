@@ -1,0 +1,70 @@
+Let's make a Project Requirement readme file: make 2 readme : 1. with the below data and 2nd will be gpt suggestion/modified 
+Name: Lael Hospital
+Purpose: Hospital internal management system 
+Tech stack: Go for backend , React + vite for frontend, sqlc for db 
+Features:
+Login/Autentication/Authorizations:
+- There will be two options given: Admin & Staffs ( all feature will be same but admin will have some superpages : Manage staff page 
+Register (Admin)
+1. Name , mobileNumber, email: (optional), Degination: (Auto filled as admin will be doctor) , 
+Password(min 8 alpha-numaric-special character)
+2. Registrrion only done successuly after the otp verification with 1min.
+
+Login (Admin) :
+- Mobile with otp verification ( session expiry time : if no action is happing for 1hr ) 
+
+Registeration and Login for Staffs : 
+- Registention can't be done directly: it will sent request to the admin, when admin approve then only staff can have successfully apporved.
+- Everything will be same for registeration except for the degination: here we will give three option: doctor, nurse and staff.
+- Login can be done by mobile & password , or mobile + otp. 
+
+## Forgot password option given for Staff: using mobile otp
+
+### Main Flow: 
+- The home page will contain header, footer, Left bar. Left bar will always open and divied into two section : Profile details & options :
+ For admin : Manage Staff(This will display all the registered staffs , onclicing any of the staff will open full details of staff including login history and master option such as chnage the status of staff: Active to inactive to Temparory inactive), Patient History(list todays pateints on the page but have seach feature where patent can be seach by mobile number, name , or opd id), Approve Requests(here the registeration request of the pateint will come)
+
+For Staffs on the left bar : patient history , View Request
+
+- The home page will have many content regarding the hospital and images. The page will Main two big options : Outdoor Patients and Indoor Patient and Generate OPD
+
+Outdoor patient:
+2 options: in the page : Basic Details & Doctor Check-in 
+- After clicking on basic details this option , a page will open with a form asking for the basic details of the patients : Name , mobile , age , sex ,  Address(locality/area, city, state, pincode optional), Date(will open a calender)
+- after filling this details to submit , backend api call will first check the database by querying the mobile search that if the patient exists or not.
+Note: I will have a Template of opd , from the details that are being storing in the backend will be used to generate the opd
+New Patient: After clicking on submit , the backend will generate a opd id that will be displayed as a barcode on the opd and will make a entry in the db 
+
+Existing patient: If the mobile number is present in the db then after submiting the basic detail we will insert one more new row with the same opd id but with a revisitId and this revisitId will be null for the new patient.
+
+- Now patient baisc details is successfullly inserted. Now its turn to visit to the doctor and this data will be will be inserted in the new table with forign key of the patient basic detail.
+- Doctor Visit Section (Doctor check-in):
+It contains 3 main sections:
+1. Symtoms form: Doctor will litsen and fill the symtoms with having feature of listing symtoms
+2. Prescription/Suggetions: This is same as symtoms
+3. Medicines: This will be also form of list where doctor write 3 things : name , volume in ml, timings (three checklist : morning , afternoon , night)
+4. Future Suggestions: This will be also as symtoms : where doctor will suggest what test need to be requeried , what can be done next , when to visit next, etc.
+
+
+- now after clicking submit : all the data is being saved to the database where the reference will be id of the basic detail table so that to prevent duplicate entries.
+
+### Indoor patent: now we can keep skip this after clicking on thhis button we will show a page that display feture not available yet .
+
+### Opd generation:
+- we will have a fixed opd templete 
+- after clicking on the page , two option will be there : generate Latest opd , generate older opd :
+- and under them either mobile number or the opd id can be asked to generate the opd in realtime.
+- the opd must be generated with data stored in the db with the fixed templete design .
+
+
+Template design : 
+- the mid full black space have total 4 parts : 
+2 column: details and medicines
+- details contain the 3 rows: sysmtoms , precription and future suggestion
+
+
+- Data modeling : 
+1. LaelUsers table: id(auto-increment), name , mobile, email, designation, status, isAdmin, isApproved(always 1 for admin) , password , createdOn, updatedOn.: entry will be created after successfully registrated/request registration
+2. LaelOtp table: id , mobile, otp, expiry, isValidated, createdOn, updatedOn
+3. LaelPatients: id, name , mobile, opdId, age , sex , address, revistId, createdOn, updatedOn
+4. PatientOpd: id, patientId, symtoms, precription, medicines, futureSuggestion, createdOn , updatedOn 

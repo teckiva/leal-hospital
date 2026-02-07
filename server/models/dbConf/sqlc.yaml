@@ -1,0 +1,25 @@
+version: "2"
+sql:
+  - engine: "mysql"
+    queries:
+      - "users.sql"
+      - "otp.sql"
+      - "patients.sql"
+      - "patient_opd.sql"
+      - "sessions.sql"
+    schema: "schema.sql"
+    gen:
+      go:
+        package: "db"
+        sql_package: "database/sql"
+        sql_driver: "github.com/go-sql-driver/mysql"
+        out: "../db"
+        emit_json_tags: true
+        emit_prepared_queries: false
+        emit_interface: true
+        emit_exact_table_names: false
+        emit_empty_slices: true
+        overrides:
+          - db_type: "datetime"
+            go_type: "time.Time"
+            nullable: false
