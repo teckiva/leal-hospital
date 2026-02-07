@@ -10,6 +10,7 @@ type DBManagerInterface interface {
 	Initialize() error
 	GetWriteDBConn(ctx context.Context) (DBConnInterface, error)
 	GetReadDBConn(ctx context.Context) (DBConnInterface, error)
+	GetDB() *sql.DB
 	Close() error
 }
 
