@@ -20,15 +20,105 @@ const OPDTemplate = ({ patientData, opdData }) => {
       {/* Header Section */}
       <div className="opd-header">
         <div className="medical-symbol">
-          <svg width="80" height="100" viewBox="0 0 80 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M40 10 L35 25 L40 30 L45 25 Z" fill="#DAA520" />
-            <ellipse cx="40" cy="10" rx="8" ry="8" fill="#DAA520" />
-            <path d="M35 30 Q30 35 25 40 L15 70 Q20 75 25 75 L30 40 Z" fill="#DAA520" stroke="#8B6914" strokeWidth="1" />
-            <path d="M45 30 Q50 35 55 40 L65 70 Q60 75 55 75 L50 40 Z" fill="#DAA520" stroke="#8B6914" strokeWidth="1" />
-            <path d="M25 40 L30 45 L35 40 L30 50 Z" fill="#DAA520" />
-            <path d="M55 40 L50 45 L45 40 L50 50 Z" fill="#DAA520" />
-            <rect x="35" y="30" width="10" height="50" fill="#DAA520" />
-            <ellipse cx="40" cy="80" rx="6" ry="4" fill="#DAA520" />
+          <svg width="90" height="110" viewBox="0 0 90 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              {/* Gradients for 3D effect */}
+              <radialGradient id="ballGradient" cx="30%" cy="30%">
+                <stop offset="0%" stopColor="#FFFEF7" />
+                <stop offset="40%" stopColor="#F5F0DC" />
+                <stop offset="100%" stopColor="#D4C5A0" />
+              </radialGradient>
+
+              <linearGradient id="staffGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#D4C5A0" />
+                <stop offset="50%" stopColor="#F5F0DC" />
+                <stop offset="100%" stopColor="#C0B090" />
+              </linearGradient>
+
+              <linearGradient id="wingGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#F8F4E6" />
+                <stop offset="50%" stopColor="#E8DCC0" />
+                <stop offset="100%" stopColor="#D4C5A0" />
+              </linearGradient>
+
+              <linearGradient id="snakeGradient" x1="30%" y1="30%" x2="70%" y2="70%">
+                <stop offset="0%" stopColor="#FFFEF7" />
+                <stop offset="50%" stopColor="#F0E8D0" />
+                <stop offset="100%" stopColor="#D0C0A0" />
+              </linearGradient>
+
+              {/* Shadow filters */}
+              <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur in="SourceAlpha" stdDeviation="2"/>
+                <feOffset dx="2" dy="3" result="offsetblur"/>
+                <feComponentTransfer>
+                  <feFuncA type="linear" slope="0.3"/>
+                </feComponentTransfer>
+                <feMerge>
+                  <feMergeNode/>
+                  <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+              </filter>
+            </defs>
+
+            {/* Shadow layer */}
+            <g opacity="0.2" transform="translate(3, 4)">
+              <ellipse cx="45" cy="8" rx="7" ry="7" fill="#000"/>
+              <rect x="40" y="15" width="10" height="75" fill="#000"/>
+              <path d="M35 25 Q25 35 20 50 L15 75 L25 80 L35 50 Z" fill="#000"/>
+              <path d="M55 25 Q65 35 70 50 L75 75 L65 80 L55 50 Z" fill="#000"/>
+            </g>
+
+            {/* Main Caduceus */}
+            <g filter="url(#shadow)">
+              {/* Top ball */}
+              <ellipse cx="45" cy="8" rx="7" ry="7" fill="url(#ballGradient)" stroke="#B8A882" strokeWidth="0.5"/>
+              <ellipse cx="43" cy="6" rx="2" ry="2" fill="#FFFFFF" opacity="0.6"/>
+
+              {/* Central staff */}
+              <rect x="40" y="15" width="10" height="75" fill="url(#staffGradient)" stroke="#B8A882" strokeWidth="0.5"/>
+              <rect x="41" y="15" width="3" height="75" fill="#FFFFFF" opacity="0.15"/>
+
+              {/* Left wing */}
+              <path d="M35 22 Q25 25 18 32 Q15 38 15 45 Q15 48 18 50 L25 48 Q28 40 35 35 Z"
+                    fill="url(#wingGradient)" stroke="#B8A882" strokeWidth="0.8"/>
+              <path d="M35 24 Q28 27 23 32 Q22 35 23 38 L27 37 Q29 33 35 30 Z"
+                    fill="#FFFFFF" opacity="0.25"/>
+              <line x1="23" y1="35" x2="18" y2="38" stroke="#B8A882" strokeWidth="1.5"/>
+              <line x1="26" y1="32" x2="21" y2="35" stroke="#B8A882" strokeWidth="1.5"/>
+              <line x1="29" y1="29" x2="24" y2="32" stroke="#B8A882" strokeWidth="1.5"/>
+
+              {/* Right wing */}
+              <path d="M55 22 Q65 25 72 32 Q75 38 75 45 Q75 48 72 50 L65 48 Q62 40 55 35 Z"
+                    fill="url(#wingGradient)" stroke="#B8A882" strokeWidth="0.8"/>
+              <path d="M55 24 Q62 27 67 32 Q68 35 67 38 L63 37 Q61 33 55 30 Z"
+                    fill="#FFFFFF" opacity="0.25"/>
+              <line x1="67" y1="35" x2="72" y2="38" stroke="#B8A882" strokeWidth="1.5"/>
+              <line x1="64" y1="32" x2="69" y2="35" stroke="#B8A882" strokeWidth="1.5"/>
+              <line x1="61" y1="29" x2="66" y2="32" stroke="#B8A882" strokeWidth="1.5"/>
+
+              {/* Left snake (spiral around staff) */}
+              <path d="M35 25 Q30 30 28 38 Q27 48 30 58 Q33 68 35 75"
+                    stroke="url(#snakeGradient)" strokeWidth="4" fill="none" strokeLinecap="round"/>
+              <path d="M35 25 Q32 30 31 38 Q30 48 32 58 Q34 68 35 75"
+                    stroke="#FFFFFF" strokeWidth="1.5" fill="none" opacity="0.4" strokeLinecap="round"/>
+              <ellipse cx="35" cy="25" rx="3" ry="3" fill="url(#snakeGradient)"/>
+              <ellipse cx="33" cy="24" rx="1" ry="1" fill="#FFFFFF" opacity="0.6"/>
+              <ellipse cx="35" cy="75" rx="2.5" ry="2.5" fill="url(#snakeGradient)"/>
+
+              {/* Right snake (spiral around staff) */}
+              <path d="M55 25 Q60 30 62 38 Q63 48 60 58 Q57 68 55 75"
+                    stroke="url(#snakeGradient)" strokeWidth="4" fill="none" strokeLinecap="round"/>
+              <path d="M55 25 Q58 30 59 38 Q60 48 58 58 Q56 68 55 75"
+                    stroke="#FFFFFF" strokeWidth="1.5" fill="none" opacity="0.4" strokeLinecap="round"/>
+              <ellipse cx="55" cy="25" rx="3" ry="3" fill="url(#snakeGradient)"/>
+              <ellipse cx="57" cy="24" rx="1" ry="1" fill="#FFFFFF" opacity="0.6"/>
+              <ellipse cx="55" cy="75" rx="2.5" ry="2.5" fill="url(#snakeGradient)"/>
+
+              {/* Bottom base */}
+              <ellipse cx="45" cy="90" rx="8" ry="4" fill="url(#ballGradient)" stroke="#B8A882" strokeWidth="0.5"/>
+              <ellipse cx="45" cy="89" rx="6" ry="3" fill="#FFFFFF" opacity="0.2"/>
+            </g>
           </svg>
         </div>
 
