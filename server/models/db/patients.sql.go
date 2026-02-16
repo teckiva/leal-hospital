@@ -47,6 +47,76 @@ func (q *Queries) CreatePatient(ctx context.Context, arg CreatePatientParams) (s
 	)
 }
 
+const getAllVisitsByMobile = `-- name: GetAllVisitsByMobile :many
+SELECT id, name, mobile, opd_id, age, sex, address_locality, address_city, address_state, address_pincode, visit_number, created_on, updated_on FROM lael_patients
+WHERE mobile = ?
+ORDER BY visit_number ASC
+`
+
+func (q *Queries) GetAllVisitsByMobile(ctx context.Context, mobile string) ([]LaelPatient, error) {
+	rows, err := q.db.QueryContext(ctx, getAllVisitsByMobile, mobile)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	items := []LaelPatient{}
+	for rows.Next() {
+		var i LaelPatient
+		if err := rows.Scan(
+			&i.ID,
+			&i.Name,
+			&i.Mobile,
+			&i.OpdID,
+			&i.Age,
+			&i.Sex,
+			&i.AddressLocality,
+			&i.AddressCity,
+			&i.AddressState,
+			&i.AddressPincode,
+			&i.VisitNumber,
+			&i.CreatedOn,
+			&i.UpdatedOn,
+		); err != nil {
+			return nil, err
+		}
+		items = append(items, i)
+	}
+	if err := rows.Close(); err != nil {
+		return nil, err
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
+}
+
+const getLatestVisitByOPDID = `-- name: GetLatestVisitByOPDID :one
+SELECT id, name, mobile, opd_id, age, sex, address_locality, address_city, address_state, address_pincode, visit_number, created_on, updated_on FROM lael_patients
+WHERE opd_id = ?
+ORDER BY visit_number DESC
+`
+
+func (q *Queries) GetLatestVisitByOPDID(ctx context.Context, opdID string) (LaelPatient, error) {
+	row := q.db.QueryRowContext(ctx, getLatestVisitByOPDID, opdID)
+	var i LaelPatient
+	err := row.Scan(
+		&i.ID,
+		&i.Name,
+		&i.Mobile,
+		&i.OpdID,
+		&i.Age,
+		&i.Sex,
+		&i.AddressLocality,
+		&i.AddressCity,
+		&i.AddressState,
+		&i.AddressPincode,
+		&i.VisitNumber,
+		&i.CreatedOn,
+		&i.UpdatedOn,
+	)
+	return i, err
+}
+
 const getPatientByID = `-- name: GetPatientByID :one
 SELECT id, name, mobile, opd_id, age, sex, address_locality, address_city, address_state, address_pincode, visit_number, created_on, updated_on FROM lael_patients WHERE id = ?
 `
