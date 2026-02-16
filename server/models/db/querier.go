@@ -19,9 +19,11 @@ type Querier interface {
 	DeleteExpiredOTP(ctx context.Context) error
 	DeleteExpiredSessions(ctx context.Context) error
 	DeleteSession(ctx context.Context, sessionToken string) error
+	GetAllVisitsByMobile(ctx context.Context, mobile string) ([]LaelPatient, error)
 	GetLatestOTP(ctx context.Context, arg GetLatestOTPParams) (LaelOtp, error)
 	GetLatestOTPByEmail(ctx context.Context, arg GetLatestOTPByEmailParams) (LaelOtp, error)
 	GetLatestPatientOPD(ctx context.Context, patientID int64) (PatientOpd, error)
+	GetLatestVisitByOPDID(ctx context.Context, opdID string) (LaelPatient, error)
 	GetPatientByID(ctx context.Context, id int64) (LaelPatient, error)
 	GetPatientByMobile(ctx context.Context, mobile string) (LaelPatient, error)
 	GetPatientByOPDID(ctx context.Context, opdID string) (LaelPatient, error)

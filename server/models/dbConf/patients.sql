@@ -44,3 +44,13 @@ LIMIT ? OFFSET ?;
 UPDATE lael_patients
 SET visit_number = visit_number + 1, updated_on = NOW()
 WHERE mobile = ?;
+
+-- name: GetAllVisitsByMobile :many
+SELECT * FROM lael_patients
+WHERE mobile = ?
+ORDER BY visit_number ASC;
+
+-- name: GetLatestVisitByOPDID :one
+SELECT * FROM lael_patients
+WHERE opd_id = ?
+ORDER BY visit_number DESC;
