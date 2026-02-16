@@ -1,0 +1,585 @@
+/* OPD Template Styles - Professional Enhanced Version */
+.opd-container {
+  width: 210mm;
+  min-height: 297mm;
+  margin: 0 auto;
+  padding: 20mm;
+  background: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  position: relative;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Header Section */
+.opd-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 4px solid #5B2C91;
+  padding-bottom: 15px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 8px rgba(91, 44, 145, 0.1);
+}
+
+.medical-symbol {
+  flex: 0 0 90px;
+  filter: drop-shadow(2px 3px 5px rgba(0, 0, 0, 0.2));
+}
+
+.medical-symbol svg {
+  filter: drop-shadow(1px 2px 3px rgba(0, 0, 0, 0.15));
+}
+
+.hospital-info {
+  flex: 1;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.hospital-name {
+  font-size: 44px;
+  font-weight: 900;
+  color: #5B2C91;
+  margin: 0 0 10px 0;
+  letter-spacing: 3px;
+  text-shadow: 2px 2px 4px rgba(91, 44, 145, 0.15);
+  line-height: 1.1;
+}
+
+.hospital-address-hindi {
+  font-size: 13px;
+  color: #444;
+  margin: 4px 0;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.hospital-contact {
+  font-size: 15px;
+  font-weight: bold;
+  color: #333;
+  margin: 5px 0;
+  letter-spacing: 0.5px;
+}
+
+.hospital-accreditation {
+  flex: 0 0 270px;
+  text-align: right;
+  font-size: 11px;
+  line-height: 1.6;
+  color: #444;
+  font-weight: 500;
+}
+
+.hospital-accreditation p {
+  margin: 3px 0;
+}
+
+.location-line {
+  font-weight: bold;
+  color: #333;
+}
+
+/* Doctor Name Section */
+.doctor-name-section {
+  text-align: center;
+  margin: 12px 0 18px 0;
+  padding: 12px 0;
+  border-bottom: 3px solid #e8e8e8;
+  background: linear-gradient(to bottom, rgba(216, 67, 21, 0.02), transparent);
+}
+
+.doctor-name {
+  font-size: 34px;
+  color: #D84315;
+  font-weight: 900;
+  margin: 0 0 8px 0;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 2px rgba(216, 67, 21, 0.1);
+}
+
+.doctor-qualifications {
+  font-size: 15px;
+  color: #333;
+  margin: 4px 0;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.doctor-specialization {
+  font-size: 14px;
+  color: #D84315;
+  margin: 4px 0;
+  font-weight: 600;
+}
+
+.doctor-registration {
+  font-size: 13px;
+  color: #555;
+  margin: 4px 0;
+  font-weight: 500;
+}
+
+/* Patient Details Section */
+.patient-details-section {
+  margin: 22px 0;
+  font-size: 14px;
+  font-weight: 600;
+  background: rgba(0, 0, 0, 0.01);
+  padding: 10px 0;
+  border-radius: 4px;
+}
+
+.patient-line-1,
+.patient-line-2 {
+  margin: 10px 0;
+  display: flex;
+  align-items: baseline;
+  position: relative;
+  padding: 0 10px;
+}
+
+.patient-details-section .label {
+  font-weight: 700;
+  margin-right: 8px;
+  white-space: nowrap;
+  color: #222;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.patient-details-section .filled-data {
+  font-weight: 500;
+  color: #000;
+  margin: 0 8px;
+  min-width: 30px;
+  position: relative;
+  z-index: 2;
+  font-size: 14px;
+}
+
+.patient-details-section .dotted-line,
+.patient-details-section .dotted-line-short,
+.patient-details-section .dotted-line-long {
+  flex: 1;
+  border-bottom: 2px dotted #666;
+  margin: 0 5px;
+  min-width: 50px;
+  height: 1px;
+  position: relative;
+  top: -2px;
+}
+
+.patient-details-section .dotted-line-short {
+  flex: 0 0 120px;
+}
+
+.patient-details-section .dotted-line-long {
+  flex: 1;
+}
+
+/* Main Content Section */
+.opd-main-content {
+  display: flex;
+  min-height: 520px;
+  position: relative;
+  margin-top: 25px;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Left Sidebar */
+.left-sidebar {
+  flex: 0 0 190px;
+  background: linear-gradient(to bottom, #E8F4FD 0%, #E0F0FA 100%);
+  padding: 22px 18px;
+  border-right: 3px solid #90CAF9;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.05);
+}
+
+.vitals-item {
+  margin: 28px 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a1a1a;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.vitals-value {
+  margin-top: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  min-height: 22px;
+  color: #000;
+  background: rgba(255, 255, 255, 0.6);
+  padding: 4px 8px;
+  border-radius: 3px;
+  border: 1px solid rgba(144, 202, 249, 0.3);
+}
+
+.ear-examination {
+  margin: 25px 0;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.5);
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.ear-examination strong {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 15px;
+  color: #1a1a1a;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.ear-diagram {
+  display: flex;
+  justify-content: center;
+  margin: 12px 0;
+  filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.1));
+}
+
+.ear-notes {
+  font-size: 12px;
+  font-weight: 500;
+  margin-top: 8px;
+  min-height: 18px;
+  text-align: left;
+  padding: 4px 8px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 3px;
+}
+
+.findings-section {
+  margin: 32px 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: #1a1a1a;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.findings-value {
+  margin-top: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  min-height: 35px;
+  color: #000;
+  background: rgba(255, 255, 255, 0.6);
+  padding: 6px 10px;
+  border-radius: 3px;
+  border: 1px solid rgba(144, 202, 249, 0.3);
+}
+
+/* Center Content */
+.center-content {
+  flex: 1;
+  position: relative;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(to bottom, #ffffff 0%, #fafafa 100%);
+}
+
+.rx-symbol {
+  font-size: 130px;
+  color: #5B2C91;
+  font-weight: bold;
+  font-family: Georgia, 'Times New Roman', serif;
+  position: absolute;
+  top: 35px;
+  left: 55px;
+  z-index: 2;
+  opacity: 0.95;
+  text-shadow: 3px 3px 6px rgba(91, 44, 145, 0.2);
+}
+
+.rx-symbol sub {
+  font-size: 65px;
+  vertical-align: baseline;
+  position: relative;
+  bottom: -18px;
+}
+
+.caduceus-watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.08;
+  z-index: 1;
+  pointer-events: none;
+  filter: blur(0.5px);
+}
+
+/* THE 3 INVISIBLE SECTIONS */
+.prescription-section {
+  position: relative;
+  z-index: 3;
+  margin: 18px 0;
+  padding: 12px 15px;
+  min-height: 110px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 4px;
+}
+
+.prescription-section .section-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 10px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.prescription-section .section-content {
+  font-size: 13px;
+  line-height: 1.7;
+  color: #1a1a1a;
+  font-weight: 500;
+}
+
+.symptoms-section {
+  margin-top: 150px;
+}
+
+.medicines-section {
+  margin-top: 12px;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(91, 44, 145, 0.1);
+}
+
+.future-section {
+  margin-top: 12px;
+}
+
+/* Lists styling */
+.symptoms-list,
+.prescription-list,
+.future-list {
+  margin: 8px 0;
+  padding-left: 22px;
+  list-style-type: disc;
+}
+
+.symptoms-list li,
+.prescription-list li,
+.future-list li {
+  margin: 5px 0;
+  line-height: 1.6;
+  color: #2a2a2a;
+}
+
+.empty-space {
+  min-height: 70px;
+}
+
+/* Medicines Table */
+.medicines-table {
+  margin: 18px 0;
+  width: 100%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.medicines-table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+.medicines-table thead {
+  background: linear-gradient(to bottom, #5B2C91, #6d3ba8);
+  color: white;
+}
+
+.medicines-table th,
+.medicines-table td {
+  border: 1px solid #ddd;
+  padding: 8px 10px;
+  text-align: left;
+}
+
+.medicines-table th {
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.medicines-table td {
+  font-size: 12px;
+  font-weight: 500;
+  background: white;
+}
+
+.medicines-table tbody tr:nth-child(even) {
+  background: rgba(91, 44, 145, 0.03);
+}
+
+.medicines-table tbody tr:hover {
+  background: rgba(91, 44, 145, 0.08);
+}
+
+.medicines-table td:nth-child(3),
+.medicines-table td:nth-child(4),
+.medicines-table td:nth-child(5),
+.medicines-table th:nth-child(3),
+.medicines-table th:nth-child(4),
+.medicines-table th:nth-child(5) {
+  text-align: center;
+  width: 70px;
+  font-weight: 600;
+}
+
+/* Legal Text */
+.legal-text {
+  position: absolute;
+  right: -35px;
+  top: 50%;
+  transform: translateY(-50%) rotate(90deg);
+  transform-origin: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: #D84315;
+  white-space: nowrap;
+  z-index: 4;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 2px rgba(216, 67, 21, 0.2);
+}
+
+/* Timing Section */
+.timing-section {
+  position: absolute;
+  bottom: 35px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 4;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 8px 20px;
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.opd-timing {
+  font-size: 16px;
+  font-weight: 700;
+  color: #388E3C;
+  margin: 0;
+  white-space: nowrap;
+  letter-spacing: 0.5px;
+  text-shadow: 1px 1px 2px rgba(56, 142, 60, 0.15);
+}
+
+/* Footer */
+.opd-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 35px;
+  background: linear-gradient(to right, #00838F, #00ACC1, #0097A7);
+  box-shadow: 0 -2px 8px rgba(0, 131, 143, 0.3);
+}
+
+/* Print Styles */
+@media print {
+  .opd-container {
+    box-shadow: none;
+    margin: 0;
+    padding: 15mm;
+  }
+
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  .prescription-section {
+    page-break-inside: avoid;
+  }
+
+  .filled-data {
+    color: #000 !important;
+  }
+
+  .vitals-value,
+  .findings-value,
+  .ear-notes {
+    color: #000 !important;
+  }
+
+  .opd-main-content {
+    box-shadow: none;
+  }
+
+  .left-sidebar {
+    box-shadow: none;
+  }
+
+  .timing-section {
+    box-shadow: none;
+  }
+}
+
+/* Responsive for screen preview */
+@media screen and (max-width: 900px) {
+  .opd-container {
+    width: 100%;
+    min-height: auto;
+    padding: 15px;
+  }
+
+  .hospital-name {
+    font-size: 30px;
+    letter-spacing: 2px;
+  }
+
+  .doctor-name {
+    font-size: 26px;
+  }
+
+  .hospital-accreditation {
+    flex: 0 0 200px;
+    font-size: 10px;
+  }
+
+  .opd-main-content {
+    flex-direction: column;
+  }
+
+  .left-sidebar {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .rx-symbol {
+    font-size: 90px;
+    top: 25px;
+    left: 35px;
+  }
+
+  .prescription-section {
+    margin-top: 12px;
+  }
+
+  .symptoms-section {
+    margin-top: 110px;
+  }
+
+  .timing-section {
+    position: static;
+    transform: none;
+    margin-top: 20px;
+  }
+}
