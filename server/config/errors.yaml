@@ -122,6 +122,24 @@
   decline_type: "BD"
   source: PATIENT_SERVICE
 
+"4003":
+  message: Invalid mobile number format
+  display_message: Please enter a valid 10-digit mobile number.
+  decline_type: "BD"
+  source: PATIENT_SERVICE
+
+"4004":
+  message: Missing required fields
+  display_message: Please provide all required patient information.
+  decline_type: "BD"
+  source: PATIENT_SERVICE
+
+"4005":
+  message: Invalid OPD ID
+  display_message: The OPD ID provided is invalid or does not match the patient.
+  decline_type: "BD"
+  source: PATIENT_SERVICE
+
 # OPD Service Errors (5000-5999)
 "5000":
   message: OPD record not found
